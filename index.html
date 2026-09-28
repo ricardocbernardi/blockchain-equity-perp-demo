@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c18">
+  <meta name="description" content="Simulador do Blockchain Equity Perp sobre o Solactive Blockchain Index NTR.">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Blockchain Equity Perp — Simulação</title>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Blockchain Equity Perp, início">
+        <span class="brand-mark">B<span>›</span></span>
+        <span><strong>BLOCKCHAIN</strong><small>EQUITY PERP</small></span>
+      </a>
+      <nav class="topnav" aria-label="Navegação">
+        <a href="#mercado">Mercado</a><a href="#posicao">Posição</a><a href="#metodologia">Metodologia</a>
+      </nav>
+      <div class="header-actions"><span class="top-status"><i></i> SIMULAÇÃO</span><button type="button" id="wallet-button" class="wallet-button">Conectar MetaMask</button></div>
+    </header>
+
+    <main>
+      <div class="notice"><span class="notice-icon">i</span><span>Todos os níveis, saldos e resultados nesta tela são <strong>fictícios</strong>. Não há conexão com a Solactive nem transações em blockchain.</span></div>
+      <div id="wallet-state" class="wallet-state" role="status" aria-live="polite">Conexão opcional: identifica a carteira e confere a rede Polygon. Não solicita assinatura, transação ou depósito.</div>
+      <section class="intro" id="mercado">
+        <div>
+          <p class="eyebrow">MERCADO DE ÍNDICE · BEP / USDC</p>
+          <h1>Blockchain<br><em>Equity Perp.</em></h1>
+          <p class="intro-copy">Explore posições compradas e vendidas sobre o nível do Solactive Blockchain Index NTR. Um laboratório para testar o produto antes de qualquer lançamento.</p>
+          <div class="index-tags"><span>ISIN DE000SL0DNR5</span><span>.SOLBKCH · NTR</span><span>POLYGON PoS · PROPOSTA</span></div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orb-core">B<span>›</span></div></div>
+      </section>
+
+      <section class="workbench" aria-label="Simulador de mercado">
+        <div class="left-stack">
+          <div class="panel chart-panel">
+            <div class="panel-heading"><div><p class="eyebrow">NÍVEL SIMULADO</p><h2>Solactive Blockchain Index <span>NTR</span></h2></div><span class="demo-pill">DADOS FICTÍCIOS</span></div>
+            <div class="level-row"><strong id="current-level">1.000,00</strong><span class="level-unit">pontos</span><span id="level-change" class="level-change">0,00%</span></div>
+            <div class="chart-wrap"><svg id="chart" viewBox="0 0 760 230" role="img" aria-label="Gráfico ilustrativo do nível simulado do índice" preserveAspectRatio="none"><defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8ff64" stop-opacity=".28"/><stop offset="1" stop-color="#b8ff64" stop-opacity="0"/></linearGradient></defs><path id="chart-area" fill="url(#area)"/><polyline id="chart-line" fill="none" stroke="#b8ff64" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="chart-grid"><span>SIMULAÇÃO</span><span>SEM COTAÇÃO EM TEMPO REAL</span></div></div>
+            <div class="scenario"><div><strong>Teste um cenário</strong><small>Altere os pontos para observar risco e resultado.</small></div><div class="scenario-actions"><button type="button" id="fall-button" class="small-button">− 5%</button><button type="button" id="reset-level-button" class="small-button">Reset</button><button type="button" id="rise-button" class="small-button">+ 5%</button></div></div>
+          </div>
+          <div class="metric-grid"><div class="mini-card"><span>MULTIPLICADOR ILUSTRATIVO</span><strong>1 USDC <small>/ ponto</small></strong></div><div class="mini-card"><span>MARGEM INICIAL ILUSTRATIVA</span><strong>10%</strong></div><div class="mini-card"><span>MARGEM DE MANUTENÇÃO</span><strong>5%</strong></div></div>
+        </div>
+
+        <aside class="panel ticket" aria-labelledby="ticket-title">
+          <div class="ticket-heading"><div><p class="eyebrow">LABORATÓRIO DE POSIÇÕES</p><h2 id="ticket-title">Nova posição</h2></div><span class="ticket-symbol">BEP</span></div>
+          <div class="segmented" role="group" aria-label="Direção da posição"><button type="button" class="direction active" id="long-button" aria-pressed="true">↗ Comprada</button><button type="button" class="direction" id="short-button" aria-pressed="false">↘ Vendida</button></div>
+          <form id="order-form">
+            <label for="contracts">Quantidade de contratos</label><div class="input-wrap"><input id="contracts" name="contracts" inputmode="decimal" type="number" min="0.000001" step="0.000001" value="1" required><span>CONTRATOS</span></div>
+            <label for="collateral">Garantia fictícia</label><div class="input-wrap"><input id="collateral" name="collateral" inputmode="decimal" type="number" min="0" step="0.000001" value="200" required><span>USDC</span></div>
+            <div class="ticket-breakdown"><div><span>Nível de entrada</span><strong id="entry-preview">1.000,00 pts</strong></div><div><span>Nocional</span><strong id="notional-preview">1.000,00 USDC</strong></div><div><span>Margem mínima</span><strong id="margin-preview">100,00 USDC</strong></div></div>
+            <button class="primary-button" type="submit" id="submit-order">Abrir posição simulada <span>↗</span></button>
+            <p class="ticket-caption">Nenhum token será transferido. Os dados são mantidos apenas nesta sessão.</p>
+          </form>
+          <div id="message" class="message" role="status" aria-live="polite"></div>
+        </aside>
+      </section>
+
+      <section class="position-section" id="posicao"><div class="section-heading"><div><p class="eyebrow">SEU LABORATÓRIO</p><h2>Posição simulada</h2></div><span id="position-count" class="count">0 POSIÇÕES</span></div><div id="position-card" class="position-card empty"><div class="empty-icon">◇</div><div><strong>Nenhuma posição aberta</strong><p>Escolha uma direção e abra uma posição fictícia para acompanhar o PnL.</p></div></div></section>
+
+      <section class="method" id="metodologia"><div><p class="eyebrow">REFERÊNCIA CORRETA</p><h2>O índice, em pontos.<br><em>Não a cota do ETF.</em></h2></div><div class="method-copy"><p>O BEP foi especificado sobre o <strong>Solactive Blockchain Index Net Total Return</strong> (.SOLBKCH / DE000SL0DNR5). O nocional e o PnL dependem do multiplicador em USDC por ponto, que ainda precisa de definição econômica para um mercado real.</p><a href="https://www.solactive.com/index/DE000SL0DNR5/" target="_blank" rel="noopener noreferrer">Consultar a página oficial do índice ↗</a></div></section>
+    </main>
+    <footer><span>© BEP · Protótipo técnico</span><span>Sem oferta, custódia ou negociação real.</span></footer>
+  </div>
+  <script type="module" src="./bundle.js"></script>
+</body>
+</html>

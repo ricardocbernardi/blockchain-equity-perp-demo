@@ -1,0 +1,10 @@
+{
+  "name": "Blockchain Equity Perp | Simulação",
+  "short_name": "BEP Sim",
+  "description": "Simulador de posições perpétuas referenciadas no Solactive Blockchain Index NTR.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#080c18",
+  "theme_color": "#080c18",
+  "icons": [{ "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
