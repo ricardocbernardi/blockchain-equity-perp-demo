@@ -43860,8 +43860,8 @@ function showWallet(address, chainHex) {
   const short = `${address.slice(0, 6)}\u2026${address.slice(-4)}`;
   const polygon = chainHex?.toLowerCase() === "0x89";
   walletButton.textContent = short;
-  walletState.textContent = polygon ? `${short} conectada \xE0 Polygon. O simulador continua sem transa\xE7\xF5es ou dep\xF3sitos.` : `${short} conectada em outra rede. Polygon (chain ID 137) seria necess\xE1ria para a proposta de mercado.`;
-  walletState.classList.toggle("wallet-warning", !polygon);
+  walletState.textContent = polygon ? `${short} conectada \xE0 Polygon. Esta conex\xE3o n\xE3o lista o BEP em Perps da MetaMask.` : `${short} conectada em outra rede. Esta conex\xE3o n\xE3o lista o BEP em Perps da MetaMask.`;
+  walletState.classList.remove("wallet-warning");
 }
 walletButton.addEventListener("click", async () => {
   walletButton.disabled = true;
